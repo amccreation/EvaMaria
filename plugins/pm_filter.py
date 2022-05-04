@@ -136,7 +136,7 @@ async def advantage_spoll_choker(bot, query):
             await auto_filter(bot, query, k)
         else:
             k = await query.message.edit('This Movie Not Found In DataBase')
-            await asyncio.sleep(10)
+            await asyncio.sleep(18)
             await k.delete()
 
 
@@ -734,7 +734,7 @@ async def advantage_spell_chok(msg):
     gs_parsed = []
     if not g_s:
         k = await msg.reply("I couldn't find any movie in that name.")
-        await asyncio.sleep(8)
+        await asyncio.sleep(18)
         await k.delete()
         return
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
@@ -763,7 +763,7 @@ async def advantage_spell_chok(msg):
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
         k = await msg.reply("I couldn't find anything related to that. Check your spelling")
-        await asyncio.sleep(8)
+        await asyncio.sleep(18)
         await k.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
@@ -824,4 +824,6 @@ async def manual_filters(client, message, text=False):
                     logger.exception(e)
                 break
     else:
-        return False
+        await asyncio.sleep(400)
+        await Send_message.delete()
+       return False
